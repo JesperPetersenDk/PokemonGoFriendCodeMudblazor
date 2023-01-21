@@ -6,14 +6,14 @@
     <MudItem xs="8" sm="8">
         @if(!succes)
         {
-            <p>Angiv QR kode til pokemon GO rigtigt!</p>
+            <p>Enter the QR code for pokemon GO correctly!</p>
         }
         <MudPaper Class="pa-4">
             <MudForm @ref="form" @bind-IsValid="@succes">
                 <MudTextField @bind-Value="FriendCodeText" Label="Friend code" Variant="Variant.Outlined"></MudTextField>
                 <div class="d-flex align-center justify-space-between mt-6">
-                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="GivfriendQRCode" Disabled="@(!succes)" Class="ml-auto">Giv mig QR kode.</MudButton>
-                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="RandomQRCode" Disabled="@(!succes)" Class="ml-auto">Random QR kode.</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="GivfriendQRCode" Disabled="@(!succes)" Class="ml-auto">Give mig QR Code.</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="RandomQRCode" Disabled="@(!succes)" Class="ml-auto">Random QR Code.</MudButton>
                 </div>
             </MudForm>
         </MudPaper>
