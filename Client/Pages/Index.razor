@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 <PageTitle>Index</PageTitle>
+
 <MudGrid>
     <MudItem xs="8" sm="8">
         @if(!succes)
@@ -19,11 +20,11 @@
     <MudItem xs="4" sm="4">
         @if(ShowQR)
         {
+            <a href="@QRUrl" target="_blank">Åben QR</a>
             <img src="@QRUrl" />
         }
     </MudItem>
 </MudGrid>
-
 
 @code {
     MudForm form;
@@ -47,7 +48,7 @@
 
             using(var client = new HttpClient())
             {
-                var url = "https://api.qrserver.com/v1/create-qr-code/?data={FriendCodeText}&size=350x350";
+                var url = $"https://api.qrserver.com/v1/create-qr-code/?data={FriendCodeText}&size=350x350";
                 var response = await client.GetAsync($"{url}");
                 var resultNewUrl = response.RequestMessage.RequestUri.OriginalString;
                 if(response.IsSuccessStatusCode)
