@@ -13,6 +13,7 @@
                 <MudTextField @bind-Value="FriendCodeText" Label="Friend code" Variant="Variant.Outlined"></MudTextField>
                 <div class="d-flex align-center justify-space-between mt-6">
                     <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="GivfriendQRCode" Disabled="@(!succes)" Class="ml-auto">Giv mig QR kode.</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="RandomQRCode" Disabled="@(!succes)" Class="ml-auto">Random QR kode.</MudButton>
                 </div>
             </MudForm>
         </MudPaper>
@@ -33,6 +34,22 @@
     public bool ShowQR { get; set; } = false;
     public string QRUrl { get; set; } = string.Empty;
 
+    async Task RandomQRCode()
+    {
+        List<string> list = new List<string> { "0359 9263 9059", "1759 5788 2082", "9064 8101 4661", "6989 6678 1856", "2363 1564 2878", "7529 0312 7236", "9056 0092 2739", "6835 4771 1541", "4581 8633 9001", "4196 1470 7138", "9869 9628 9664", "5455 8564 1510", "2155 3752 8436", "7763 4030 5876", "5965 6559 7727", "6015 1100 7936", "9241 0336 7217", "4629 6050 6107", "9731 1606 6702", "7486 0406 3121", "5142 3030 0855", "5112 8979 5767", "9344 7629 4433", "5363 8560 9840", "5663 0322 5163", "5640 2048 0980", "3756 9482 8010", "1898 8465 3595", "1577 1609 2316", "6131 2368 5783", "5640 2048 0980", "9496 7046 2456", "5389 6309 5841", };
+        FriendCodeText = list.OrderBy(r => Guid.NewGuid()).ToList().First().Trim().Replace(" ", "");
+        using (var client = new HttpClient())
+        {
+            var url = $"https://api.qrserver.com/v1/create-qr-code/?data={FriendCodeText}&size=350x350";
+            var response = await client.GetAsync($"{url}");
+            var resultNewUrl = response.RequestMessage.RequestUri.OriginalString;
+            if (response.IsSuccessStatusCode)
+            {
+                ShowQR = true;
+                QRUrl = url;
+            }
+        }
+    }
 
     async Task GivfriendQRCode()
     {
