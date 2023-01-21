@@ -1,0 +1,61 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+<MudGrid>
+    <MudItem xs="8" sm="8">
+        @if(!succes)
+        {
+            <p>Angiv QR kode til pokemon GO rigtigt!</p>
+        }
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" @bind-IsValid="@succes">
+                <MudTextField @bind-Value="FriendCodeText" Label="Friend code" Variant="Variant.Outlined"></MudTextField>
+                <div class="d-flex align-center justify-space-between mt-6">
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" OnClick="GivfriendQRCode" Disabled="@(!succes)" Class="ml-auto">Giv mig QR kode.</MudButton>
+                </div>
+            </MudForm>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="4" sm="4">
+        @if(ShowQR)
+        {
+            <img src="@QRUrl" />
+        }
+    </MudItem>
+</MudGrid>
+
+
+@code {
+    MudForm form;
+    bool succes;
+    public string FriendCodeText { get; set; } = string.Empty;
+    public bool ShowQR { get; set; } = false;
+    public string QRUrl { get; set; } = string.Empty;
+
+
+    async Task GivfriendQRCode()
+    {
+        if(string.IsNullOrEmpty(FriendCodeText))
+        {
+            //Error
+            succes = false;
+        }
+        else
+        {
+            //succes
+            FriendCodeText = FriendCodeText.Trim().Replace(" ", "");
+
+            using(var client = new HttpClient())
+            {
+                var url = "https://api.qrserver.com/v1/create-qr-code/?data={FriendCodeText}&size=350x350";
+                var response = await client.GetAsync($"{url}");
+                var resultNewUrl = response.RequestMessage.RequestUri.OriginalString;
+                if(response.IsSuccessStatusCode)
+                {
+                    ShowQR = true;
+                    QRUrl = url;
+                }
+            }
+        }
+    }
+}

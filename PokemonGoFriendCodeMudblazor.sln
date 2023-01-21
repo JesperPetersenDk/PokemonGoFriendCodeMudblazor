@@ -1,0 +1,37 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0361858-9E5C-45DF-B84C-AF230DCA2175}") = "PokemonGoFriendCodeMudblazor.Server", "Server\PokemonGoFriendCodeMudblazor.Server.csproj", "{45BB2A1A-7791-4A7F-A429-63CF648953FB}"
+EndProject
+Project("{A0361858-9E5C-45DF-B84C-AF230DCA2175}") = "PokemonGoFriendCodeMudblazor.Client", "Client\PokemonGoFriendCodeMudblazor.Client.csproj", "{AFCAF635-8B3B-4B9B-A11A-38EC5F7A60D3}"
+EndProject
+Project("{A0361858-9E5C-45DF-B84C-AF230DCA2175}") = "PokemonGoFriendCodeMudblazor.Shared", "Shared\PokemonGoFriendCodeMudblazor.Shared.csproj", "{62290DEF-A6FA-4984-B159-938A243B2BEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45BB2A1A-7791-4A7F-A429-63CF648953FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BB2A1A-7791-4A7F-A429-63CF648953FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BB2A1A-7791-4A7F-A429-63CF648953FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BB2A1A-7791-4A7F-A429-63CF648953FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCAF635-8B3B-4B9B-A11A-38EC5F7A60D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCAF635-8B3B-4B9B-A11A-38EC5F7A60D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCAF635-8B3B-4B9B-A11A-38EC5F7A60D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCAF635-8B3B-4B9B-A11A-38EC5F7A60D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62290DEF-A6FA-4984-B159-938A243B2BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62290DEF-A6FA-4984-B159-938A243B2BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62290DEF-A6FA-4984-B159-938A243B2BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62290DEF-A6FA-4984-B159-938A243B2BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24DD6FF1-2324-4122-A161-4AD8C73C85B2}
+	EndGlobalSection
+EndGlobal
